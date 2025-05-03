@@ -1,2 +1,5 @@
-/tidb/.tiup
+# env
 /.env
+
+# TiDB
+/tidb/.tiup
