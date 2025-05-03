@@ -1,0 +1,2 @@
+# boilerplate-django-tidb
+DjangoとTiDBのボイラープレートのリポジトリ
