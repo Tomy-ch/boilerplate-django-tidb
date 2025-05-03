@@ -1,0 +1,11 @@
+# The latest version of TiDB is built by default.
+# Set `TIDV_VERSION` if you need to specify the TiDB version.
+# i.e.
+TIDB_VERSION=v8.5.0
+DB_HOST=0.0.0.0
+DB_TAG=dev
+TIDB_COUNT=2
+TIKV_COUNT=1
+TIFLASH_COUNT=1
+PD_COUNT=3
+TIPROXY_COUNT=1
