@@ -1,0 +1,32 @@
+
+services:
+  tidb:
+    build:
+      context: .
+      dockerfile: tidb/Dockerfile.tidb
+    volumes:
+      - ./tidb/.tiup/data:/root/.tiup/data
+      - ./tidb/.tiup/components:/root/.tiup/components
+      - ./tidb/.tiup/history:/root/.tiup/history
+      - ./tidb/.tiup/manifests:/root/.tiup/manifests
+      - ./tidb/.tiup/storage:/root/.tiup/storage
+      - ./tidb/.tiup/telemetry:/root/.tiup/telemetry
+    command:
+      - ${TIDB_VERSION}
+      - --host=${DB_HOST}
+      - --tag=${DB_TAG}${TIDB_VERSION}
+      - --db=${TIDB_COUNT}
+      - --kv=${TIKV_COUNT}
+      - --tiflash=${TIFLASH_COUNT}
+      - --pd=${PD_COUNT}
+      - --tiproxy=${TIPROXY_COUNT}
+    ports:
+      - "6000:6000"   # tiproxy(mysql protocol)
+      - "6001:6001"   # tiproxy(mysql protocol)
+      - "4000:4000"   # tidb(mysql protocol)
+      - "4001:4001"   # tidb(mysql protocol)
+      - "4002:4002"   # tidb(mysql protocol)
+      - "10080:10080" # tidb(http protocol)
+      - "2379:2379"   # pd/dashboard
+      - "3000:3000"   # grafana
+
